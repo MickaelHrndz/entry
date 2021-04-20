@@ -4,31 +4,38 @@
 
 # Entry
 
-Here is the pitch :
+## Pitch
+
+The `Entry` widget lets you simply animate a widget into a visible state.
 
 - Don't just display widgets : make them **appear**.
 - Lightweight and flexible : **one** widget is all you need.
 - Wrap a widget with an `Entry` widget, and watch the **magic** happen.
 
-The `Entry` widget lets you simply animate a widget into a visible state.
-The default constructor animates **opacity**, **scale** and **position**.
-You can specify the **delay**, **duration** and **curve** of the animation.
+## Constructors
+
+### Default
+
+The default constructor animates **opacity**, **scale** and **position** concurrently.
+
+You can specify the **delay**, **duration** and the animation **curve**.
+
+Every animation parameter is exposed but optional.
+
+### Named
 
 `Entry` has three named constructors :
 
-- `Entry.alpha()` : animates **opacity** only
-- `Entry.scale()` : animates **scale** only
-- `Entry.offset()` : animates **position** only
+- `Entry.alpha()` animates **opacity** only
+- `Entry.scale()` animates **scale** only
+- `Entry.offset()` animates **position** only
 
+## Working with builders
 
+Using `Entry` with **list** and **grid** builders can create a staggered effect :
 
-# What to know
-
-- Works well with lists and grids
-- 3 concurrent animations : **alpha**, **scale** and **offset**
-- 3 named constructors for single animations
-- You can set the **delay** and the **animation curve**
-- On the default constructor, all parameters are exposed but optional
+- Wrap the generated child with an `Entry` widget
+- Multiply your **delay** value by the **index**
 
 # Motivation
 
@@ -39,4 +46,4 @@ You can specify the **delay**, **duration** and **curve** of the animation.
 
 # Credit
 
-A special thank you to Felix Blaschke for his [simple_animations](https://pub.dev/packages/simple_animations) package, this package literally depends on it.
+A special thank you to Felix Blaschke for his [simple_animations](https://pub.dev/packages/simple_animations) package. This package literally depends on it.
