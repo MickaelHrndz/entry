@@ -35,15 +35,15 @@ class _MyAppState extends State<MyApp> {
                 child: card("Entry()")
               ),
               Entry.alpha(
-                delay: Duration(seconds: 2),
+                delay: Duration(seconds: 1),
                 child: card("Entry.alpha()")
               ),
               Entry.scale(
-                delay: Duration(seconds: 3),
+                delay: Duration(seconds: 1),
                 child: card("Entry.scale()")
               ),
               Entry.offset(
-                delay: Duration(seconds: 4),
+                delay: Duration(seconds: 1),
                 child: card("Entry.offset()")
               ),
             ]
