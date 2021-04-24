@@ -29,59 +29,86 @@ class Entry extends StatelessWidget {
   /// The initial vertical offset (goes from [yOffset] to 0)
   final double yOffset;
 
+  /// The initial angle
+  final double angle;
+
   /// Default constructor
-  Entry(
-    { 
-      required this.child,
+  Entry({ 
+    this.delay = Duration.zero, 
+    this.duration = const Duration(milliseconds: 300),
+    this.curve = Curves.ease,
+    this.opacity = 1,
+    this.scale = 1,
+    this.xOffset = 0,
+    this.yOffset = 0,
+    this.angle = 0,
+    required this.child
+  });
+
+  /// Constructor using all animations in full effect, except [angle]
+  Entry.all({ 
       this.delay = Duration.zero, 
-      this.duration = const Duration(milliseconds: 250),
+      this.duration = const Duration(milliseconds: 300),
       this.curve = Curves.ease,
       this.opacity = 0,
       this.scale = 0,
       this.xOffset = 0,
       this.yOffset = 150,
-    }
-  );
+      this.angle = 0,
+      required this.child
+  });
 
   /// Opacity-only constructor
-  Entry.alpha({ 
-    required Widget child, 
+  Entry.opacity({ 
     Duration delay = Duration.zero,
-    double opacity = 0
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.ease,
+    double opacity = 0,
+    required Widget child
   }) : this(
-    child: child,
     delay: delay, 
+    duration: duration,
+    curve: curve,
+    opacity: opacity,
+    child: child,
     yOffset: 0,
     scale: 1,
-    opacity: opacity
   );
   
   /// Scale-only constructor
   Entry.scale({ 
-    required Widget child, 
     Duration delay = Duration.zero,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.ease,
     double scale = 0,
+    required Widget child
   }) : this(
-    child: child,
     delay: delay, 
+    duration: duration,
+    curve: curve,
+    scale: scale,
+    child: child,
     yOffset: 0,
     opacity: 1,
-    scale: scale,
   );
 
   /// Offset-only constructor
   Entry.offset({ 
-    required Widget child, 
     Duration delay = Duration.zero,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.ease,
     double xOffset = 0,
     double yOffset = 1000,
+    required Widget child
   }) : this(
-    child: child,
     delay: delay, 
-    opacity: 1,
-    scale: 1,
+    duration: duration,
+    curve: curve,
     xOffset: xOffset,
     yOffset: yOffset,
+    child: child,
+    opacity: 1,
+    scale: 1,
   );
 
 
@@ -91,7 +118,8 @@ class Entry extends StatelessWidget {
       ..add("opacity", Tween(begin: opacity, end: 1.0), duration, curve)
       ..add("scale", Tween(begin: scale, end: 1.0), duration, curve)
       ..add("translateX", Tween(begin: xOffset, end: 0.0), duration, curve)
-      ..add("translateY", Tween(begin: yOffset, end: 0.0), duration, curve);
+      ..add("translateY", Tween(begin: yOffset, end: 0.0), duration, curve)
+      ..add("angle", Tween(begin: angle, end: 0.0), duration, curve);
     return PlayAnimation<MultiTweenValues<String>>(
       delay: delay,
       duration: tween.duration,
@@ -106,7 +134,9 @@ class Entry extends StatelessWidget {
             offset: Offset(
               value.get("translateX"), 
               value.get("translateY")), 
-              child: child
+              child: Transform.rotate(
+                angle: value.get("angle"),
+                child: child)
           ),
         ),
       ),

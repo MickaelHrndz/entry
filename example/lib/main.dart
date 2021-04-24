@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:entry/entry.dart';
 import 'package:flutter/material.dart';
 
@@ -10,44 +12,122 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
+  final tabs = ["Constructors", "Staggered builds", "Entry combinations"];
+  final random = Random();
+  
   Widget card(String label) => Card(
     child: Container(
-      width: 100,
-      height: 100,
+      width: 128,
+      height: 128,
       child: Center(child: Text(label, style: TextStyle(fontSize: 16),)),
     )
   );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return DefaultTabController(
+      length: tabs.length,
+      child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
+        appBar: TabBar(
+          tabs: [
+            for(var tab in tabs)
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(tab, 
+                  style: TextStyle(color: Colors.black),)
+              )
+          ],
         ),
-        body: Center(
-          child: Wrap(
-            alignment: WrapAlignment.center,
-            runAlignment: WrapAlignment.center,
-            children: [
-              Entry(
-                delay: Duration(seconds: 1),
-                child: card("Entry()")
+        body: TabBarView(
+          children: [
+            // Constructors
+            Center(
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                runAlignment: WrapAlignment.center,
+                children: [
+                  Entry.all(
+                    //delay: Duration(seconds: 1),
+                    child: card("Entry.all()")
+                  ),
+                  Entry.opacity(
+                    //delay: Duration(seconds: 1),
+                    child: card("Entry.opacity()")
+                  ),
+                  Entry.scale(
+                    //delay: Duration(seconds: 1),
+                    child: card("Entry.scale()")
+                  ),
+                  Entry.offset(
+                    //delay: Duration(seconds: 1),
+                    child: card("Entry.offset()")
+                  ),
+                ]
               ),
-              Entry.alpha(
-                delay: Duration(seconds: 1),
-                child: card("Entry.alpha()")
+            ),
+
+            // Staggered builds
+            GridView.builder(
+              itemCount: 100,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              itemBuilder: (context, index) => Entry.all(
+                delay: Duration(milliseconds: 150 + (random.nextInt(350))),
+                child: card("Card n°$index")
               ),
-              Entry.scale(
-                delay: Duration(seconds: 1),
-                child: card("Entry.scale()")
+            ),
+
+            // Entry combinations
+            Center(
+              child: Wrap(
+                children: [
+                  // Example 1
+                  Entry.offset(
+                    xOffset: -1000,
+                    delay: Duration(milliseconds: 300),
+                    duration: Duration(milliseconds: 800),
+                    child: Entry.opacity(
+                      delay: Duration(milliseconds: 200),
+                      duration: Duration(milliseconds: 1200),
+                      curve: Curves.easeInQuint,
+                      child: card("Example 1"),)
+                  ),
+                  // Example 2
+                  Entry(
+                    delay: Duration(milliseconds: 300),
+                    duration: Duration(milliseconds: 300),
+                    opacity: 0,
+                    yOffset: -1000,
+                    curve: Curves.easeInOutCubic,
+                    child: Entry(
+                      delay: Duration(milliseconds: 450),
+                      duration: Duration(milliseconds: 600),
+                      curve: Curves.decelerate,
+                      scale: 0.5,
+                      angle: 1.5707,
+                      child: card("Example 2"),)
+                  ),
+                  // Example 3
+                  Entry(
+                    delay: Duration(milliseconds: 300),
+                    duration: Duration(milliseconds: 700),
+                    yOffset: 1000,
+                    xOffset: 1000,
+                    angle: -4.1415,
+                    curve: Curves.fastOutSlowIn,
+                    child: Entry(
+                      delay: Duration(milliseconds: 1000),
+                      duration: Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                      opacity: 0.5,
+                      scale: 0.5,
+                      child: card("Example 3"),)
+                  ),
+                ]
               ),
-              Entry.offset(
-                delay: Duration(seconds: 1),
-                child: card("Entry.offset()")
-              ),
-            ]
-          ),
+            ),
+          ],
         ),
         floatingActionButton: Builder(
           builder: (context) {
@@ -56,12 +136,13 @@ class _MyAppState extends State<MyApp> {
               onPressed: () async {
                 // Re-initializes the whole page to show the animations again
                 Navigator.of(context).pop();
-                Navigator.push(context, MaterialPageRoute(builder: (_) => MyApp()));
+                Navigator.push(context, PageRouteBuilder(pageBuilder: (_,__,___) => MyApp(), transitionDuration: Duration.zero));
               }
             );
           }
         ),
       ),
+    ),
     );
   }
 }

@@ -21,7 +21,7 @@ void main() {
   });
 
   testWidgets('fade constructor', (tester) async {
-    await pumpEntry(tester, Entry.alpha(child: Text('test')));
+    await pumpEntry(tester, Entry.opacity(child: Text('test')));
     expect(find.text('test'), findsOneWidget);
   });
 
