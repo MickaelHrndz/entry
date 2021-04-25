@@ -17,6 +17,7 @@ class _MyAppState extends State<MyApp> {
   
   Widget card(String label) => Card(
     child: Container(
+      color: Colors.blue[50],
       width: 128,
       height: 128,
       child: Center(child: Text(label, style: TextStyle(fontSize: 16),)),
@@ -73,7 +74,7 @@ class _MyAppState extends State<MyApp> {
               itemCount: 100,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) => Entry.all(
-                delay: Duration(milliseconds: 150 + (random.nextInt(350))),
+                delay: Duration(milliseconds: (200 * (index % 3))),
                 child: card("Card n°$index")
               ),
             ),
