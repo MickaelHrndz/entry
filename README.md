@@ -2,7 +2,6 @@
 <img src="entry.gif" alt="entry" />
 </p>
 
----
 # Entry
 
 This Flutter package introduces a new widget : `Entry`.
@@ -15,15 +14,15 @@ It lets you simply animate a widget into a visible state.
 
 `Entry` animates **opacity**, **scale**, **position** and **angle** concurrently.
 
-_Because it's about the entry, you're only setting the begin value of these animation parameters. This guarantees that the widget will appear properly at the end of the delay and duration._
-
 You can visualize the `Curves` constants on the  [doc page](https://api.flutter.dev/flutter/animation/Curves-class.html).
 
 ---
+
 ## 🏭 Constructors
----
+
 ### Default
-`Entry({delay, duration, curve, opacity, scale, xOffset, yOffset, angle, child})`
+
+`Entry({key, delay, duration, curve, opacity, scale, xOffset, yOffset, angle, child})`
 
 This constructor is **not animated** by default.
 
@@ -39,36 +38,37 @@ It includes every parameter available in named constructors.
 - `Entry.scale({scale})`
 - `Entry.offset({xOffset, yOffset})`
 
-_The `delay`, `duration`, `curve` and `child` parameters are omitted here._
+_The `key`, `delay`, `duration`, `curve` and `child` parameters are omitted here._
 
 ---
+
 ## ✨ Extra magic
----
 
 ### 💕 Combining entries
 
-You can wrap an `Entry` with another one.
+Wrapping an `Entry` with another one works just as you expect it.
 
-By playing with delays, durations and curves, come up with an all original entry for your widget.
+By playing with all the parameters, possibilities are endless.
 
-You could also copy one from the examples.
+You can copy one of the examples and start from there.
 
-### 👷 Lists and grid builders
+### 👷 Grid builders
 
-Using `Entry` with **list** and **grid** builders can create a **staggered** effect :
+Using `Entry` with **grid** builders can create a **staggered** effect :
 
 - Wrap the generated child with an `Entry` widget
-- Multiply a `delay` value (10-100) by the child's `index`
+- Multiply the `delay` value by the `index % crossAxisCount`
 
-Be careful with long lists : this can delay the entry too much if you have a lot of elements and scroll fast.
+In result, the widgets of a same row will appear after each other.
 
-Alternatively, you can add a random number to your delay (or duration) :
+You could aso add a random number to your delay (or duration) :
 
 `delay: Duration(milliseconds: 100 + (random.nextInt(200)))`
 
-This makes the entries look more independent from each other.
+This makes the entries more independent from each other.
 
 ---
+
 # ✊ Motivation
 
 - Animations are key to elevate and refine the user experience.
@@ -78,6 +78,7 @@ This makes the entries look more independent from each other.
 - I got tired of copying the same file over multiple projects.
 
 ---
+
 # 🙏 Credit
 
 A special thank you to Felix Blaschke for his [simple_animations](https://pub.dev/packages/simple_animations) package. This package literally depends on it.
