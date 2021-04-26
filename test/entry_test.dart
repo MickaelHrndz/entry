@@ -3,17 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:entry/entry.dart';
 
 void main() {
-
   TestWidgetsFlutterBinding.ensureInitialized();
 
   /// custom function to wrap [WidgetTester.pumpWidget]
-  Future<void> pumpEntry(WidgetTester tester, Entry Entry) => 
-    tester.pumpWidget(
-      MaterialApp(
-        home: Entry
-      ), 
-      Duration(seconds: 1)
-  );
+  Future<void> pumpEntry(WidgetTester tester, Entry Entry) =>
+      tester.pumpWidget(MaterialApp(home: Entry), Duration(seconds: 1));
 
   testWidgets('default constructor', (tester) async {
     await pumpEntry(tester, Entry(child: Text('test')));

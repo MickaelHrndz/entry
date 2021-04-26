@@ -11,139 +11,139 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   final tabs = ["Constructors", "Staggered builds", "Entry combinations"];
   final random = Random();
-  
+
   Widget card(String label) => Card(
-    child: Container(
-      color: Colors.blue[50],
-      width: 128,
-      height: 128,
-      child: Center(child: Text(label, style: TextStyle(fontSize: 16),)),
-    )
-  );
+          child: Container(
+        color: Colors.grey[100],
+        width: 128,
+        height: 128,
+        child: Center(
+            child: Text(
+          label,
+          style: TextStyle(fontSize: 16),
+        )),
+      ));
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
       child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: TabBar(
-          tabs: [
-            for(var tab in tabs)
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: TabBar(
+            tabs: [
+              for (var tab in tabs)
+                Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      tab,
+                      style: TextStyle(color: Colors.black),
+                    ))
+            ],
+          ),
+          body: TabBarView(
+            children: [
+              // Constructors
+              Center(
+                child: Wrap(
+                    alignment: WrapAlignment.center,
+                    runAlignment: WrapAlignment.center,
+                    children: [
+                      Entry.all(
+                          //delay: Duration(seconds: 1),
+                          child: card("Entry.all()")),
+                      Entry.opacity(
+                          //delay: Duration(seconds: 1),
+                          child: card("Entry.opacity()")),
+                      Entry.scale(
+                          //delay: Duration(seconds: 1),
+                          child: card("Entry.scale()")),
+                      Entry.offset(
+                          //delay: Duration(seconds: 1),
+                          child: card("Entry.offset()")),
+                    ]),
+              ),
+
+              // Staggered builds
               Padding(
-                padding: EdgeInsets.all(8),
-                child: Text(tab, 
-                  style: TextStyle(color: Colors.black),)
-              )
-          ],
-        ),
-        body: TabBarView(
-          children: [
-            // Constructors
-            Center(
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                runAlignment: WrapAlignment.center,
-                children: [
-                  Entry.all(
-                    //delay: Duration(seconds: 1),
-                    child: card("Entry.all()")
-                  ),
-                  Entry.opacity(
-                    //delay: Duration(seconds: 1),
-                    child: card("Entry.opacity()")
-                  ),
-                  Entry.scale(
-                    //delay: Duration(seconds: 1),
-                    child: card("Entry.scale()")
-                  ),
-                  Entry.offset(
-                    //delay: Duration(seconds: 1),
-                    child: card("Entry.offset()")
-                  ),
-                ]
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: GridView.builder(
+                  itemCount: 100,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context, index) => Entry.all(
+                      delay: Duration(milliseconds: (200 * (index % 3))),
+                      child: card("Card n°$index")),
+                ),
               ),
-            ),
 
-            // Staggered builds
-            GridView.builder(
-              itemCount: 100,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              itemBuilder: (context, index) => Entry.all(
-                delay: Duration(milliseconds: (200 * (index % 3))),
-                child: card("Card n°$index")
-              ),
-            ),
-
-            // Entry combinations
-            Center(
-              child: Wrap(
-                children: [
+              // Entry combinations
+              Center(
+                child: Wrap(children: [
                   // Example 1
                   Entry.offset(
-                    xOffset: -1000,
-                    delay: Duration(milliseconds: 300),
-                    duration: Duration(milliseconds: 800),
-                    child: Entry.opacity(
-                      delay: Duration(milliseconds: 200),
-                      duration: Duration(milliseconds: 1200),
-                      curve: Curves.easeInQuint,
-                      child: card("Example 1"),)
-                  ),
+                      xOffset: -1000,
+                      delay: Duration(milliseconds: 300),
+                      duration: Duration(milliseconds: 800),
+                      child: Entry.opacity(
+                        delay: Duration(milliseconds: 200),
+                        duration: Duration(milliseconds: 1200),
+                        curve: Curves.easeInQuint,
+                        child: card("Example 1"),
+                      )),
                   // Example 2
                   Entry(
-                    delay: Duration(milliseconds: 300),
-                    duration: Duration(milliseconds: 300),
-                    opacity: 0,
-                    yOffset: -1000,
-                    curve: Curves.easeInOutCubic,
-                    child: Entry(
-                      delay: Duration(milliseconds: 450),
-                      duration: Duration(milliseconds: 600),
-                      curve: Curves.decelerate,
-                      scale: 0.5,
-                      angle: 1.5707,
-                      child: card("Example 2"),)
-                  ),
+                      delay: Duration(milliseconds: 300),
+                      duration: Duration(milliseconds: 300),
+                      opacity: 0,
+                      yOffset: -1000,
+                      curve: Curves.easeInOutCubic,
+                      child: Entry(
+                        delay: Duration(milliseconds: 450),
+                        duration: Duration(milliseconds: 600),
+                        curve: Curves.decelerate,
+                        scale: 0.5,
+                        angle: 1.5707,
+                        child: card("Example 2"),
+                      )),
                   // Example 3
                   Entry(
-                    delay: Duration(milliseconds: 300),
-                    duration: Duration(milliseconds: 700),
-                    yOffset: 1000,
-                    xOffset: 1000,
-                    angle: -4.1415,
-                    curve: Curves.fastOutSlowIn,
-                    child: Entry(
-                      delay: Duration(milliseconds: 1000),
-                      duration: Duration(milliseconds: 250),
-                      curve: Curves.easeOut,
-                      opacity: 0.5,
-                      scale: 0.5,
-                      child: card("Example 3"),)
-                  ),
-                ]
+                      delay: Duration(milliseconds: 300),
+                      duration: Duration(milliseconds: 700),
+                      yOffset: 1000,
+                      xOffset: 1000,
+                      angle: -4.1415,
+                      curve: Curves.fastOutSlowIn,
+                      child: Entry(
+                        delay: Duration(milliseconds: 1000),
+                        duration: Duration(milliseconds: 250),
+                        curve: Curves.easeOut,
+                        opacity: 0.5,
+                        scale: 0.5,
+                        child: card("Example 3"),
+                      )),
+                ]),
               ),
-            ),
-          ],
-        ),
-        floatingActionButton: Builder(
-          builder: (context) {
+            ],
+          ),
+          floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
-              child: Icon(Icons.refresh),
-              onPressed: () async {
-                // Re-initializes the whole page to show the animations again
-                Navigator.of(context).pop();
-                Navigator.push(context, PageRouteBuilder(pageBuilder: (_,__,___) => MyApp(), transitionDuration: Duration.zero));
-              }
-            );
-          }
+                child: Icon(Icons.refresh),
+                onPressed: () async {
+                  // Re-initializes the whole page to show the animations again
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          pageBuilder: (_, __, ___) => MyApp(),
+                          transitionDuration: Duration.zero));
+                });
+          }),
         ),
       ),
-    ),
     );
   }
 }
