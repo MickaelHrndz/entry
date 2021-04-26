@@ -1,7 +1,6 @@
 name: entry
 description: Make your widgets come to life
 version: 0.0.1
-author: Mickaël Hernandez
 homepage: "https://github.com/MickaelHrndz/entry"
 
 environment:
@@ -38,6 +37,10 @@ flutter:
       ios:
         pluginClass: EntryPlugin
       windows:
+        pluginClass: EntryPlugin
+      macos:
+        pluginClass: EntryPlugin
+      linux:
         pluginClass: EntryPlugin
       web:
         pluginClass: EntryWeb
