@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final tabs = ["Constructors", "Staggered builds", "Entry combinations"];
+  final tabs = ["Constructors", "Entry combinations", "Staggered builds", "Randomization"];
   final random = Random();
 
   Widget card(String label) => Card(
@@ -67,31 +67,23 @@ class _MyAppState extends State<MyApp> {
                     ]),
               ),
 
-              // Staggered builds
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: GridView.builder(
-                  itemCount: 100,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) => Entry.all(
-                      delay: Duration(milliseconds: (200 * (index % 3))),
-                      child: card("Card n°$index")),
-                ),
-              ),
-
               // Entry combinations
               Center(
                 child: Wrap(children: [
                   // Example 1
-                  Entry.offset(
+                  Entry(
                       xOffset: -1000,
+                      scale: 20,
                       delay: Duration(milliseconds: 300),
-                      duration: Duration(milliseconds: 800),
-                      child: Entry.opacity(
-                        delay: Duration(milliseconds: 200),
-                        duration: Duration(milliseconds: 1200),
-                        curve: Curves.easeInQuint,
+                      duration: Duration(milliseconds: 700),
+                      curve: Curves.ease,
+                      child: Entry(
+                        opacity: .5,
+                        angle: 3.1415,
+                        scale: .5,
+                        delay: Duration(milliseconds: 900),
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.decelerate,
                         child: card("Example 1"),
                       )),
                   // Example 2
@@ -126,6 +118,32 @@ class _MyAppState extends State<MyApp> {
                         child: card("Example 3"),
                       )),
                 ]),
+              ),
+
+              // Staggered builds
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: GridView.builder(
+                  itemCount: 100,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context, index) => Entry.all(
+                      delay: Duration(milliseconds: (200 * (index % 3))),
+                      child: card("Card n°$index")),
+                ),
+              ),
+
+              // Randomization
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: GridView.builder(
+                  itemCount: 100,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context, index) => Entry.all(
+                      delay: Duration(milliseconds: random.nextInt(300)),
+                      child: card("Card n°$index")),
+                ),
               ),
             ],
           ),
