@@ -3,15 +3,14 @@ import 'dart:math';
 import 'package:entry/entry.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ExampleApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+/// Example app widget
+class ExampleApp extends StatelessWidget {
+  final tabs = [
+    "Constructors", "Entry combinations", "Staggered builds", "Randomization"
+  ];
 
-class _MyAppState extends State<MyApp> {
-  final tabs = ["Constructors", "Entry combinations", "Staggered builds", "Randomization"];
   final random = Random();
 
   Widget card(String label) => Card(
@@ -156,7 +155,7 @@ class _MyAppState extends State<MyApp> {
                   Navigator.push(
                       context,
                       PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => MyApp(),
+                          pageBuilder: (_, __, ___) => ExampleApp(),
                           transitionDuration: Duration.zero));
                 });
           }),

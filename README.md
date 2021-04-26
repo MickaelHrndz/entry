@@ -34,11 +34,8 @@
   <!--a href="https://codecov.io/gh/aagarwal1012/Animated-Text-Kit">
     <img src="https://codecov.io/gh/aagarwal1012/Animated-Text-Kit/branch/master/graph/badge.svg"
       alt="Codecov Coverage" />
-  </a>
-  <a href="https://www.codefactor.io/repository/github/aagarwal1012/animated-text-kit">
-    <img src="https://www.codefactor.io/repository/github/aagarwal1012/animated-text-kit/badge"
-      alt="CodeFactor" />
   </a-->
+  <a href="https://www.codefactor.io/repository/github/mickaelhrndz/entry"><img src="https://www.codefactor.io/repository/github/mickaelhrndz/entry/badge" alt="CodeFactor" /></a>
   <a href="https://pub.dev/packages/entry/license">
     <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
       alt="License: MIT" />
