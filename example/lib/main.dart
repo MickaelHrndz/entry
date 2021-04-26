@@ -7,12 +7,15 @@ void main() => runApp(ExampleApp());
 
 /// Example app widget
 class ExampleApp extends StatelessWidget {
+  // List of the tabs titles
   final tabs = [
     "Constructors", "Entry combinations", "Staggered builds", "Randomization"
   ];
 
+  // Random instance
   final random = Random();
 
+  // Custom card used for every example
   Widget card(String label) => Card(
           child: Container(
         color: Colors.grey[100],
