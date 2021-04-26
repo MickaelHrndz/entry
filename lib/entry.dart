@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-/// Animates its child into a visible state (opacity, scale and offset)
+/// Animates its child into a visible state (opacity, scale,offset and angle)
 class Entry extends StatelessWidget {
   /// The child to animate
   final Widget child;
@@ -30,7 +30,7 @@ class Entry extends StatelessWidget {
   /// The initial angle
   final double angle;
 
-  /// Default constructor
+  /// Default constructor (motionless by default)
   const Entry({
     Key? key,
     this.delay = Duration.zero,
@@ -42,9 +42,10 @@ class Entry extends StatelessWidget {
     this.yOffset = 0,
     this.angle = 0,
     required this.child,
-  }) : super(key: key);
+  }) : assert(opacity >= 0 && opacity <= 1),
+    super(key: key);
 
-  /// Constructor using all animations in full effect, except [angle]
+  /// Constructor making use of every animation by default except [angle]
   Entry.all(
       {Key? key,
       this.delay = Duration.zero,
@@ -122,8 +123,8 @@ class Entry extends StatelessWidget {
     final tween = MultiTween<String>()
       ..add("opacity", Tween(begin: opacity, end: 1.0), duration, curve)
       ..add("scale", Tween(begin: scale, end: 1.0), duration, curve)
-      ..add("translateX", Tween(begin: xOffset, end: 0.0), duration, curve)
-      ..add("translateY", Tween(begin: yOffset, end: 0.0), duration, curve)
+      ..add("xOffset", Tween(begin: xOffset, end: 0.0), duration, curve)
+      ..add("yOffset", Tween(begin: yOffset, end: 0.0), duration, curve)
       ..add("angle", Tween(begin: angle, end: 0.0), duration, curve);
     return PlayAnimation<MultiTweenValues<String>>(
       delay: delay,
@@ -135,7 +136,7 @@ class Entry extends StatelessWidget {
         child: Transform.scale(
           scale: value.get("scale"),
           child: Transform.translate(
-              offset: Offset(value.get("translateX"), value.get("translateY")),
+              offset: Offset(value.get("xOffset"), value.get("yOffset")),
               child: Transform.rotate(angle: value.get("angle"), child: child)),
         ),
       ),
