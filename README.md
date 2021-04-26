@@ -6,18 +6,19 @@
 <h1 align="center">Entry</h1>
 
 <p align="center">
-  <a href="https://pub.dartlang.org/packages/entry">
+  <a href="https://pub.dev/packages/entry">
     <img src="https://img.shields.io/pub/v/entry.svg"
       alt="Pub Package" />
-  </a>
-  <a href="https://pub.dev/packages/effective_dart">
-    <img src="https://img.shields.io/badge/style-effective_dart-40c4ff.svg"
-      alt="style: effective dart" />
   </a>
   <a href="https://flutter.dev">
     <img src="https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter"
       alt="Platform" />
   </a>
+  <a href="https://pub.dev/packages/effective_dart">
+    <img src="https://img.shields.io/badge/style-effective_dart-40c4ff.svg"
+      alt="style: effective dart" />
+  </a>
+  <!--br />
   <a href="https://pub.green/packages/entry#channel-stable">
     <img src="https://img.shields.io/endpoint?url=https://pub.green/packages/entry/badge?channel=stable&style=flat"
       alt="Latest compatibility result for Stable channel" />
@@ -29,7 +30,7 @@
   <a href="https://pub.green/packages/entry#channel-dev">
     <img src="https://img.shields.io/endpoint?url=https://pub.green/packages/entry/badge?channel=dev&style=flat"
       alt="Latest compatibility result for Dev channel" />
-  </a>
+  </a><br /-->
   <!--a href="https://codecov.io/gh/aagarwal1012/Animated-Text-Kit">
     <img src="https://codecov.io/gh/aagarwal1012/Animated-Text-Kit/branch/master/graph/badge.svg"
       alt="Codecov Coverage" />
@@ -38,7 +39,7 @@
     <img src="https://www.codefactor.io/repository/github/aagarwal1012/animated-text-kit/badge"
       alt="CodeFactor" />
   </a-->
-  <a href="https://opensource.org/licenses/MIT">
+  <a href="https://pub.dev/packages/entry/license">
     <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
       alt="License: MIT" />
   </a>
@@ -77,9 +78,9 @@ It includes every parameter available in named constructors.
 
 ### Named
 
-`Entry` has four named constructors. Here is the first :
+`Entry` has four named constructors :
 
-`Entry.all({opacity, scale, xOffset, yOffset, angle})`
+- `Entry.all({opacity, scale, xOffset, yOffset, angle})`
 
 `.all` makes use of every animation by default, except for the angle.
 
@@ -104,7 +105,7 @@ You can copy one of the [examples](https://pub.dev/packages/entry/example) and s
     <p align="center" >
         <img src="combined.gif" alt="entry" />
     </p>
-</details><br/>
+</details>
 
 ## 👷 Grid builders
 
@@ -122,15 +123,22 @@ In result, the widgets of a same row will appear after each other.
     <p align="center" >
         <img src="staggered.gif" alt="entry" />
     </p>
-</details><br/>
+</details>
 
 ### Randomization
 
-You can add a random number to your delay (or duration) :
+You can set your delay and/or duration to a random number :
 
-`delay: Duration(milliseconds: 100 + (random.nextInt(200)))`
+`delay: Duration(milliseconds: random.nextInt(300))`
 
-This makes the entries more independent from each other.
+This makes the entries look more independent from each other.
+
+<details>
+  <summary>See in action</summary>
+    <p align="center" >
+        <img src="randomized.gif" alt="entry" />
+    </p>
+</details>
 
 # ✊ Motivation
 
