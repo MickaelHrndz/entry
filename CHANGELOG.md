@@ -1,3 +1,7 @@
+# 0.0.2+2
+
+updating the package's description
+
 # 0.0.2+1
 fixing images on the readme
 

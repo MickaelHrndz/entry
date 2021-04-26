@@ -42,8 +42,8 @@ class Entry extends StatelessWidget {
     this.yOffset = 0,
     this.angle = 0,
     required this.child,
-  }) : assert(opacity >= 0 && opacity <= 1),
-    super(key: key);
+  })   : assert(opacity >= 0 && opacity <= 1),
+        super(key: key);
 
   /// Constructor making use of every animation by default except [angle]
   Entry.all(

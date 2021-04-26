@@ -1,6 +1,6 @@
 name: entry
-description: Make your widgets come to life
-version: 0.0.2+1
+description: Make your widgets come to life – Entry lets you simply animate a widget into a visible state. One widget to animate the opacity, scale, position and angle.
+version: 0.0.2+2
 homepage: "https://github.com/MickaelHrndz/entry"
 
 environment:
