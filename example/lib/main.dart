@@ -35,6 +35,7 @@ class ExampleApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: Colors.white,
           appBar: TabBar(
             tabs: [
               for (var tab in tabs)
