@@ -1,3 +1,7 @@
+# 0.0.3
+
+fixing iOS build
+
 # 0.0.2+2
 
 updating the package's description
