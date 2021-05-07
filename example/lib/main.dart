@@ -47,108 +47,110 @@ class ExampleApp extends StatelessWidget {
                     ))
             ],
           ),
-          body: TabBarView(
-            children: [
-              // Constructors
-              Center(
-                child: Wrap(
-                    alignment: WrapAlignment.center,
-                    runAlignment: WrapAlignment.center,
-                    children: [
-                      Entry.all(
-                          //delay: Duration(seconds: 1),
-                          child: card("Entry.all()")),
-                      Entry.opacity(
-                          //delay: Duration(seconds: 1),
-                          child: card("Entry.opacity()")),
-                      Entry.scale(
-                          //delay: Duration(seconds: 1),
-                          child: card("Entry.scale()")),
-                      Entry.offset(
-                          //delay: Duration(seconds: 1),
-                          child: card("Entry.offset()")),
-                    ]),
-              ),
-
-              // Entry combinations
-              Center(
-                child: Wrap(children: [
-                  // Example 1
-                  Entry(
-                      xOffset: -1000,
-                      scale: 20,
-                      delay: Duration(milliseconds: 300),
-                      duration: Duration(milliseconds: 700),
-                      curve: Curves.ease,
-                      child: Entry(
-                        opacity: .5,
-                        angle: 3.1415,
-                        scale: .5,
-                        delay: Duration(milliseconds: 900),
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.decelerate,
-                        child: card("Example 1"),
-                      )),
-                  // Example 2
-                  Entry(
-                      delay: Duration(milliseconds: 300),
-                      duration: Duration(milliseconds: 300),
-                      opacity: 0,
-                      yOffset: -1000,
-                      curve: Curves.easeInOutCubic,
-                      child: Entry(
-                        delay: Duration(milliseconds: 450),
-                        duration: Duration(milliseconds: 600),
-                        curve: Curves.decelerate,
-                        scale: 0.5,
-                        angle: 1.5707,
-                        child: card("Example 2"),
-                      )),
-                  // Example 3
-                  Entry(
-                      delay: Duration(milliseconds: 300),
-                      duration: Duration(milliseconds: 700),
-                      yOffset: 1000,
-                      xOffset: 1000,
-                      angle: -4.1415,
-                      curve: Curves.fastOutSlowIn,
-                      child: Entry(
-                        delay: Duration(milliseconds: 1000),
-                        duration: Duration(milliseconds: 250),
-                        curve: Curves.easeOut,
-                        opacity: 0.5,
-                        scale: 0.5,
-                        child: card("Example 3"),
-                      )),
-                ]),
-              ),
-
-              // Staggered builds
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: GridView.builder(
-                  itemCount: 100,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) => Entry.all(
-                      delay: Duration(milliseconds: (200 * (index % 3))),
-                      child: card("Card n°$index")),
+          body: SafeArea(
+            child: TabBarView(
+              children: [
+                // Constructors
+                Center(
+                  child: Wrap(
+                      alignment: WrapAlignment.center,
+                      runAlignment: WrapAlignment.center,
+                      children: [
+                        Entry.all(
+                            //delay: Duration(seconds: 1),
+                            child: card("Entry.all()")),
+                        Entry.opacity(
+                            //delay: Duration(seconds: 1),
+                            child: card("Entry.opacity()")),
+                        Entry.scale(
+                            //delay: Duration(seconds: 1),
+                            child: card("Entry.scale()")),
+                        Entry.offset(
+                            //delay: Duration(seconds: 1),
+                            child: card("Entry.offset()")),
+                      ]),
                 ),
-              ),
 
-              // Randomization
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: GridView.builder(
-                  itemCount: 100,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) => Entry.all(
-                      delay: Duration(milliseconds: random.nextInt(300)),
-                      child: card("Card n°$index")),
+                // Entry combinations
+                Center(
+                  child: Wrap(children: [
+                    // Example 1
+                    Entry(
+                        xOffset: -1000,
+                        scale: 20,
+                        delay: Duration(milliseconds: 300),
+                        duration: Duration(milliseconds: 700),
+                        curve: Curves.ease,
+                        child: Entry(
+                          opacity: .5,
+                          angle: 3.1415,
+                          scale: .5,
+                          delay: Duration(milliseconds: 900),
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.decelerate,
+                          child: card("Example 1"),
+                        )),
+                    // Example 2
+                    Entry(
+                        delay: Duration(milliseconds: 300),
+                        duration: Duration(milliseconds: 300),
+                        opacity: 0,
+                        yOffset: -1000,
+                        curve: Curves.easeInOutCubic,
+                        child: Entry(
+                          delay: Duration(milliseconds: 450),
+                          duration: Duration(milliseconds: 600),
+                          curve: Curves.decelerate,
+                          scale: 0.5,
+                          angle: 1.5707,
+                          child: card("Example 2"),
+                        )),
+                    // Example 3
+                    Entry(
+                        delay: Duration(milliseconds: 300),
+                        duration: Duration(milliseconds: 700),
+                        yOffset: 1000,
+                        xOffset: 1000,
+                        angle: -4.1415,
+                        curve: Curves.fastOutSlowIn,
+                        child: Entry(
+                          delay: Duration(milliseconds: 1000),
+                          duration: Duration(milliseconds: 250),
+                          curve: Curves.easeOut,
+                          opacity: 0.5,
+                          scale: 0.5,
+                          child: card("Example 3"),
+                        )),
+                  ]),
                 ),
-              ),
-            ],
+
+                // Staggered builds
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: GridView.builder(
+                    itemCount: 100,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3),
+                    itemBuilder: (context, index) => Entry.all(
+                        delay: Duration(milliseconds: (200 * (index % 3))),
+                        child: card("Card n°$index")),
+                  ),
+                ),
+
+                // Randomization
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: GridView.builder(
+                    itemCount: 100,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3),
+                    itemBuilder: (context, index) => Entry.all(
+                        delay: Duration(milliseconds: random.nextInt(300)),
+                        child: card("Card n°$index")),
+                  ),
+                ),
+              ],
+            ),
           ),
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
