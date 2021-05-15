@@ -1,6 +1,6 @@
 
 <p align="center" >
-<img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/entry.gif" alt="entry" />
+<img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/example/assets/entry.gif" alt="entry" />
 </p>
 
 <h1 align="center">Entry</h1>
@@ -100,7 +100,7 @@ You can copy one of the [examples](https://pub.dev/packages/entry/example) and s
 <details>
   <summary>See in action</summary>
     <p align="center" >
-        <img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/combined.gif" alt="entry" />
+        <img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/example/assets/combined.gif" alt="entry" />
     </p>
 </details>
 
@@ -118,7 +118,7 @@ In result, the widgets of a same row will appear after each other.
 <details>
   <summary>See in action</summary>
     <p align="center" >
-        <img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/staggered.gif" alt="entry" />
+        <img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/example/assets/staggered.gif" alt="entry" />
     </p>
 </details>
 
@@ -133,7 +133,7 @@ This makes the entries look more independent from each other.
 <details>
   <summary>See in action</summary>
     <p align="center" >
-        <img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/randomized.gif" alt="entry" />
+        <img src="https://raw.githubusercontent.com/MickaelHrndz/entry/master/example/assets/randomized.gif" alt="entry" />
     </p>
 </details>
 
