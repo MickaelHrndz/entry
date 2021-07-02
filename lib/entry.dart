@@ -42,11 +42,11 @@ class Entry extends StatelessWidget {
     this.yOffset = 0,
     this.angle = 0,
     required this.child,
-  })   : assert(opacity >= 0 && opacity <= 1),
+  })  : assert(opacity >= 0 && opacity <= 1),
         super(key: key);
 
   /// Constructor making use of every animation by default except [angle]
-  Entry.all(
+  const Entry.all(
       {Key? key,
       this.delay = Duration.zero,
       this.duration = const Duration(milliseconds: 300),
@@ -60,7 +60,7 @@ class Entry extends StatelessWidget {
       : super(key: key);
 
   /// Opacity-only constructor
-  Entry.opacity(
+  const Entry.opacity(
       {Key? key,
       Duration delay = Duration.zero,
       Duration duration = const Duration(milliseconds: 300),
@@ -79,7 +79,7 @@ class Entry extends StatelessWidget {
         );
 
   /// Scale-only constructor
-  Entry.scale(
+  const Entry.scale(
       {Key? key,
       Duration delay = Duration.zero,
       Duration duration = const Duration(milliseconds: 300),
@@ -98,7 +98,7 @@ class Entry extends StatelessWidget {
         );
 
   /// Offset-only constructor
-  Entry.offset(
+  const Entry.offset(
       {Key? key,
       Duration delay = Duration.zero,
       Duration duration = const Duration(milliseconds: 300),
