@@ -1,7 +1,5 @@
 # 0.0.5
 
-# 0.0.5
-
 - Making all constructors const
 - Switching effective dart with Flutter lints
 - Adding a few badges to the readme
