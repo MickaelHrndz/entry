@@ -1,8 +1,16 @@
+# 0.0.5
+
+# 0.0.5
+
+- Making all constructors const
+- Switching effective dart with Flutter lints
+- Adding a few badges to the readme
+
 # 0.0.4
 
 - Making entry a package and not a plugin (PR #3)
-- Fixing the app name and the appbar's display in the example project
-- Moving gifs from the root to example/assets
+- Fixing the app name and the appBar's display in the example project
+- Moving the readme images from the root to example/assets
 
 # 0.0.3
 
