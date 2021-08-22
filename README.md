@@ -17,26 +17,12 @@
   <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://badges.bar/entry/likes"></a>
   <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://badges.bar/entry/popularity"></a>
   <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://badges.bar/entry/pub%20points"></a><br />
-  <a href="https://github.com/MickaelHrndz/entry" target="_blank"><img src="https://img.shields.io/github/repo-size/mickaelhrndz/entry"></a>
-  <a href="https://github.com/MickaelHrndz/entry" target="_blank"><img src="https://img.shields.io/github/stars/mickaelhrndz/entry"></a>
-  <!--br />
-  <a href="https://pub.green/packages/entry#channel-stable">
-    <img src="https://img.shields.io/endpoint?url=https://pub.green/packages/entry/badge?channel=stable&style=flat"
-      alt="Latest compatibility result for Stable channel" />
-  </a>
-  <a href="https://pub.green/packages/entry#channel-beta">
-    <img src="https://img.shields.io/endpoint?url=https://pub.green/packages/entry/badge?channel=beta&style=flat"
-      alt="Latest compatibility result for Beta channel" />
-  </a>
-  <a href="https://pub.green/packages/entry#channel-dev">
-    <img src="https://img.shields.io/endpoint?url=https://pub.green/packages/entry/badge?channel=dev&style=flat"
-      alt="Latest compatibility result for Dev channel" />
-  </a><br /-->
-  <!--a href="https://codecov.io/gh/aagarwal1012/Animated-Text-Kit">
-    <img src="https://codecov.io/gh/aagarwal1012/Animated-Text-Kit/branch/master/graph/badge.svg"
+  <a href="https://codecov.io/gh/MickaelHrndz/entry">
+    <img src="https://codecov.io/gh/MickaelHrndz/entry/branch/master/graph/badge.svg"
       alt="Codecov Coverage" />
-  </a-->
+  </a>
   <a href="https://www.codefactor.io/repository/github/mickaelhrndz/entry"><img src="https://www.codefactor.io/repository/github/mickaelhrndz/entry/badge" alt="CodeFactor" /></a>
+  <a href="https://github.com/MickaelHrndz/entry" target="_blank"><img src="https://img.shields.io/github/stars/mickaelhrndz/entry"></a>
   <a href="https://pub.dev/packages/entry/license">
     <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
       alt="License: MIT" />
