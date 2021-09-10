@@ -42,32 +42,32 @@ class Entry extends StatelessWidget {
     this.yOffset = 0,
     this.angle = 0,
     required this.child,
-  })  : assert(opacity >= 0 && opacity <= 1),
+  })   : assert(opacity >= 0 && opacity <= 1),
         super(key: key);
 
   /// Constructor making use of every animation by default except [angle]
-  const Entry.all(
-      {Key? key,
-      this.delay = Duration.zero,
-      this.duration = const Duration(milliseconds: 300),
-      this.curve = Curves.ease,
-      this.opacity = 0,
-      this.scale = 0,
-      this.xOffset = 0,
-      this.yOffset = 150,
-      this.angle = 0,
-      required this.child})
-      : super(key: key);
+  const Entry.all({
+    Key? key,
+    this.delay = Duration.zero,
+    this.duration = const Duration(milliseconds: 300),
+    this.curve = Curves.ease,
+    this.opacity = 0,
+    this.scale = 0,
+    this.xOffset = 0,
+    this.yOffset = 150,
+    this.angle = 0,
+    required this.child,
+  }) : super(key: key);
 
   /// Opacity-only constructor
-  const Entry.opacity(
-      {Key? key,
-      Duration delay = Duration.zero,
-      Duration duration = const Duration(milliseconds: 300),
-      Curve curve = Curves.ease,
-      double opacity = 0,
-      required Widget child})
-      : this(
+  const Entry.opacity({
+    Key? key,
+    Duration delay = Duration.zero,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.ease,
+    double opacity = 0,
+    required Widget child,
+  }) : this(
           key: key,
           delay: delay,
           duration: duration,
@@ -79,14 +79,14 @@ class Entry extends StatelessWidget {
         );
 
   /// Scale-only constructor
-  const Entry.scale(
-      {Key? key,
-      Duration delay = Duration.zero,
-      Duration duration = const Duration(milliseconds: 300),
-      Curve curve = Curves.ease,
-      double scale = 0,
-      required Widget child})
-      : this(
+  const Entry.scale({
+    Key? key,
+    Duration delay = Duration.zero,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.ease,
+    double scale = 0,
+    required Widget child,
+  }) : this(
           key: key,
           delay: delay,
           duration: duration,
@@ -98,15 +98,15 @@ class Entry extends StatelessWidget {
         );
 
   /// Offset-only constructor
-  const Entry.offset(
-      {Key? key,
-      Duration delay = Duration.zero,
-      Duration duration = const Duration(milliseconds: 300),
-      Curve curve = Curves.ease,
-      double xOffset = 0,
-      double yOffset = 1000,
-      required Widget child})
-      : this(
+  const Entry.offset({
+    Key? key,
+    Duration delay = Duration.zero,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.ease,
+    double xOffset = 0,
+    double yOffset = 1000,
+    required Widget child,
+  }) : this(
           key: key,
           delay: delay,
           duration: duration,
@@ -136,8 +136,12 @@ class Entry extends StatelessWidget {
         child: Transform.scale(
           scale: value.get("scale"),
           child: Transform.translate(
-              offset: Offset(value.get("xOffset"), value.get("yOffset")),
-              child: Transform.rotate(angle: value.get("angle"), child: child)),
+            offset: Offset(
+              value.get("xOffset"),
+              value.get("yOffset"),
+            ),
+            child: Transform.rotate(angle: value.get("angle"), child: child),
+          ),
         ),
       ),
     );
