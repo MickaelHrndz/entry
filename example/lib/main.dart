@@ -5,6 +5,28 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(ExampleApp());
 
+/// Custom card used for every example
+class CustomCard extends StatelessWidget {
+  const CustomCard(this.label, {Key? key}) : super(key: key);
+  final String label;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        color: Colors.grey[100],
+        width: 128,
+        height: 128,
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 /// Example app widget
 class ExampleApp extends StatelessWidget {
   /// List of the tabs titles
@@ -17,19 +39,6 @@ class ExampleApp extends StatelessWidget {
 
   /// Random instance
   final random = Random();
-
-  /// Custom card used for every example
-  Widget card(String label) => Card(
-          child: Container(
-        color: Colors.grey[100],
-        width: 128,
-        height: 128,
-        child: Center(
-            child: Text(
-          label,
-          style: TextStyle(fontSize: 16),
-        )),
-      ));
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +54,12 @@ class ExampleApp extends StatelessWidget {
               tabs: [
                 for (var tab in tabs)
                   Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(
-                        tab,
-                        style: TextStyle(color: Colors.black),
-                      ))
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      tab,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
               ],
             ),
             body: TabBarView(
@@ -57,29 +67,30 @@ class ExampleApp extends StatelessWidget {
                 // Constructors
                 Center(
                   child: Wrap(
-                      alignment: WrapAlignment.center,
-                      runAlignment: WrapAlignment.center,
-                      children: [
-                        Entry.all(
-                            //delay: Duration(seconds: 1),
-                            child: card("Entry.all()")),
-                        Entry.opacity(
-                            //delay: Duration(seconds: 1),
-                            child: card("Entry.opacity()")),
-                        Entry.scale(
-                            //delay: Duration(seconds: 1),
-                            child: card("Entry.scale()")),
-                        Entry.offset(
-                            //delay: Duration(seconds: 1),
-                            child: card("Entry.offset()")),
-                      ]),
+                    alignment: WrapAlignment.center,
+                    runAlignment: WrapAlignment.center,
+                    children: [
+                      Entry.all(
+                          //delay: Duration(seconds: 1),
+                          child: CustomCard("Entry.all()")),
+                      Entry.opacity(
+                          //delay: Duration(seconds: 1),
+                          child: CustomCard("Entry.opacity()")),
+                      Entry.scale(
+                          //delay: Duration(seconds: 1),
+                          child: CustomCard("Entry.scale()")),
+                      Entry.offset(
+                          //delay: Duration(seconds: 1),
+                          child: CustomCard("Entry.offset()")),
+                    ],
+                  ),
                 ),
-
                 // Entry combinations
                 Center(
-                  child: Wrap(children: [
-                    // Example 1
-                    Entry(
+                  child: Wrap(
+                    children: [
+                      // Example 1
+                      Entry(
                         xOffset: -1000,
                         scale: 20,
                         delay: Duration(milliseconds: 300),
@@ -92,10 +103,11 @@ class ExampleApp extends StatelessWidget {
                           delay: Duration(milliseconds: 900),
                           duration: Duration(milliseconds: 500),
                           curve: Curves.decelerate,
-                          child: card("Example 1"),
-                        )),
-                    // Example 2
-                    Entry(
+                          child: CustomCard("Example 1"),
+                        ),
+                      ),
+                      // Example 2
+                      Entry(
                         delay: Duration(milliseconds: 300),
                         duration: Duration(milliseconds: 300),
                         opacity: 0,
@@ -107,10 +119,11 @@ class ExampleApp extends StatelessWidget {
                           curve: Curves.decelerate,
                           scale: 0.5,
                           angle: 1.5707,
-                          child: card("Example 2"),
-                        )),
-                    // Example 3
-                    Entry(
+                          child: CustomCard("Example 2"),
+                        ),
+                      ),
+                      // Example 3
+                      Entry(
                         delay: Duration(milliseconds: 300),
                         duration: Duration(milliseconds: 700),
                         yOffset: 1000,
@@ -123,9 +136,11 @@ class ExampleApp extends StatelessWidget {
                           curve: Curves.easeOut,
                           opacity: 0.5,
                           scale: 0.5,
-                          child: card("Example 3"),
-                        )),
-                  ]),
+                          child: CustomCard("Example 3"),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
 
                 // Staggered builds
@@ -134,10 +149,12 @@ class ExampleApp extends StatelessWidget {
                   child: GridView.builder(
                     itemCount: 100,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
+                      crossAxisCount: 3,
+                    ),
                     itemBuilder: (context, index) => Entry.all(
-                        delay: Duration(milliseconds: (200 * (index % 3))),
-                        child: card("Card n°$index")),
+                      delay: Duration(milliseconds: (200 * (index % 3))),
+                      child: CustomCard("Card n°$index"),
+                    ),
                   ),
                 ),
                 // Randomization
@@ -146,27 +163,34 @@ class ExampleApp extends StatelessWidget {
                   child: GridView.builder(
                     itemCount: 100,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
+                      crossAxisCount: 3,
+                    ),
                     itemBuilder: (context, index) => Entry.all(
-                        delay: Duration(milliseconds: random.nextInt(300)),
-                        child: card("Card n°$index")),
+                      delay: Duration(milliseconds: random.nextInt(300)),
+                      child: CustomCard("Card n°$index"),
+                    ),
                   ),
                 ),
               ],
             ),
-            floatingActionButton: Builder(builder: (context) {
-              return FloatingActionButton(
+            floatingActionButton: Builder(
+              builder: (context) {
+                return FloatingActionButton(
                   child: Icon(Icons.refresh),
                   onPressed: () async {
                     // Re-initializes the whole page to show the animations again
                     Navigator.of(context).pop();
                     Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (_, __, ___) => ExampleApp(),
-                            transitionDuration: Duration.zero));
-                  });
-            }),
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (_, __, ___) => ExampleApp(),
+                        transitionDuration: Duration.zero,
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),
