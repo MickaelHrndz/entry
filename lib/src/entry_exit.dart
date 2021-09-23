@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -11,6 +13,9 @@ class EntryExit extends StatefulWidget {
 
   /// The duration of the animation
   final Duration duration;
+
+  /// The reverse duration of the animation
+  final Duration? closeDuration;
 
   /// The animation curve
   final Curve curve;
@@ -38,13 +43,14 @@ class EntryExit extends StatefulWidget {
     Key? key,
     this.delay = Duration.zero,
     this.duration = const Duration(milliseconds: 300),
+    this.closeDuration,
     this.curve = Curves.ease,
     this.opacity = 1,
     this.scale = 1,
     this.xOffset = 0,
     this.yOffset = 0,
     this.angle = 0,
-    this.visible = true,
+    required this.visible,
     required this.child,
   })  : assert(opacity >= 0 && opacity <= 1),
         super(key: key);
@@ -54,6 +60,7 @@ class EntryExit extends StatefulWidget {
     Key? key,
     this.delay = Duration.zero,
     this.duration = const Duration(milliseconds: 300),
+    this.closeDuration,
     this.curve = Curves.ease,
     this.opacity = 0,
     this.scale = 0,
@@ -69,18 +76,22 @@ class EntryExit extends StatefulWidget {
     Key? key,
     Duration delay = Duration.zero,
     Duration duration = const Duration(milliseconds: 300),
+    Duration? closeDuration,
     Curve curve = Curves.ease,
     double opacity = 0,
+    required bool visible,
     required Widget child,
   }) : this(
           key: key,
           delay: delay,
           duration: duration,
+          closeDuration: closeDuration,
           curve: curve,
           opacity: opacity,
           child: child,
           yOffset: 0,
           scale: 1,
+          visible: visible,
         );
 
   /// Scale-only constructor
@@ -88,18 +99,22 @@ class EntryExit extends StatefulWidget {
     Key? key,
     Duration delay = Duration.zero,
     Duration duration = const Duration(milliseconds: 300),
+    Duration? closeDuration,
     Curve curve = Curves.ease,
     double scale = 0,
+    required bool visible,
     required Widget child,
   }) : this(
           key: key,
           delay: delay,
           duration: duration,
+          closeDuration: closeDuration,
           curve: curve,
           scale: scale,
           child: child,
           yOffset: 0,
           opacity: 1,
+          visible: visible,
         );
 
   /// Offset-only constructor
@@ -107,20 +122,24 @@ class EntryExit extends StatefulWidget {
     Key? key,
     Duration delay = Duration.zero,
     Duration duration = const Duration(milliseconds: 300),
+    Duration? closeDuration,
     Curve curve = Curves.ease,
     double xOffset = 0,
     double yOffset = 1000,
+    required bool visible,
     required Widget child,
   }) : this(
           key: key,
           delay: delay,
           duration: duration,
+          closeDuration: closeDuration,
           curve: curve,
           xOffset: xOffset,
           yOffset: yOffset,
           child: child,
           opacity: 1,
           scale: 1,
+          visible: visible,
         );
 
   @override
@@ -128,10 +147,33 @@ class EntryExit extends StatefulWidget {
 }
 
 class _EntryExitState extends State<EntryExit> {
+  late bool _visible = widget.visible;
+  Timer? _timer;
+
+  @override
+  void didUpdateWidget(dynamic oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!widget.visible) {
+      if (!oldWidget.visible && _visible) {
+        // rebuild when the portal is in progress of being hidden
+      } else if (oldWidget.visible) {
+        _timer?.cancel();
+        _timer = Timer(widget.closeDuration ?? widget.duration, () {
+          if(mounted) setState(() => _visible = false);
+        });
+      } else {
+        _visible = false;
+      }
+    } else {
+      _timer?.cancel();
+      _timer = null;
+      _visible = widget.visible;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     /// The state of the child in the widget tree
-    bool _visible = true;
 
     final tween = MultiTween<String>()
       ..add("opacity", Tween(begin: widget.opacity, end: 1.0), widget.duration, widget.curve)
@@ -139,6 +181,7 @@ class _EntryExitState extends State<EntryExit> {
       ..add("xOffset", Tween(begin: widget.xOffset, end: 0.0), widget.duration, widget.curve)
       ..add("yOffset", Tween(begin: widget.yOffset, end: 0.0), widget.duration, widget.curve)
       ..add("angle", Tween(begin: widget.angle, end: 0.0), widget.duration, widget.curve);
+
     return CustomAnimation<MultiTweenValues<String>>(
       control: widget.visible ? CustomAnimationControl.play : CustomAnimationControl.playReverse,
       delay: widget.delay,
@@ -158,17 +201,6 @@ class _EntryExitState extends State<EntryExit> {
           ),
         ),
       ),
-      animationStatusListener: (AnimationStatus status) {
-        if (status == AnimationStatus.dismissed) {
-          setState(() {
-            _visible = false;
-          });
-        } else {
-          setState(() {
-            _visible = true;
-          });
-        }
-      },
     );
   }
 }
