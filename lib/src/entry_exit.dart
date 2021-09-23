@@ -67,7 +67,7 @@ class EntryExit extends StatefulWidget {
     this.xOffset = 0,
     this.yOffset = 150,
     this.angle = 0,
-    this.visible = true,
+    required this.visible,
     required this.child,
   }) : super(key: key);
 
