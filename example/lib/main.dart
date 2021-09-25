@@ -19,7 +19,7 @@ class CustomCard extends StatelessWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         ),
       ),
@@ -29,6 +29,8 @@ class CustomCard extends StatelessWidget {
 
 /// Example app widget
 class ExampleApp extends StatelessWidget {
+  ExampleApp({Key? key}) : super(key: key);
+  
   /// List of the tabs titles
   final tabs = [
     "Constructors",
