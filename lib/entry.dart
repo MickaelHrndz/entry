@@ -43,7 +43,7 @@ class Entry extends StatelessWidget {
     this.angle = 0,
     required this.child,
   })   : assert(opacity >= 0 && opacity <= 1),
-        super(key: key);
+        super(key: key); // coverage:ignore-line
 
   /// Constructor making use of every animation by default except [angle]
   const Entry.all({
@@ -57,7 +57,7 @@ class Entry extends StatelessWidget {
     this.yOffset = 150,
     this.angle = 0,
     required this.child,
-  }) : super(key: key);
+  }) : super(key: key); // coverage:ignore-line
 
   /// Opacity-only constructor
   const Entry.opacity({
@@ -67,7 +67,7 @@ class Entry extends StatelessWidget {
     Curve curve = Curves.ease,
     double opacity = 0,
     required Widget child,
-  }) : this(
+  }) : this( // coverage:ignore-line
           key: key,
           delay: delay,
           duration: duration,
@@ -86,7 +86,7 @@ class Entry extends StatelessWidget {
     Curve curve = Curves.ease,
     double scale = 0,
     required Widget child,
-  }) : this(
+  }) : this( // coverage:ignore-line
           key: key,
           delay: delay,
           duration: duration,
@@ -106,7 +106,7 @@ class Entry extends StatelessWidget {
     double xOffset = 0,
     double yOffset = 1000,
     required Widget child,
-  }) : this(
+  }) : this( // coverage:ignore-line
           key: key,
           delay: delay,
           duration: duration,
