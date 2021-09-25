@@ -1,3 +1,7 @@
+# 0.0.6
+- Updated simple_animations to 4.0.0
+- Replaced Opacity with AnimatedOpacity for performances
+
 # 0.0.5
 
 - Making all constructors const
