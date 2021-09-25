@@ -54,10 +54,10 @@ class ExampleApp extends StatelessWidget {
               tabs: [
                 for (var tab in tabs)
                   Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Text(
                       tab,
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                   ),
               ],
@@ -69,7 +69,7 @@ class ExampleApp extends StatelessWidget {
                   child: Wrap(
                     alignment: WrapAlignment.center,
                     runAlignment: WrapAlignment.center,
-                    children: [
+                    children: const [
                       Entry.all(
                           //delay: Duration(seconds: 1),
                           child: CustomCard("Entry.all()")),
@@ -88,7 +88,7 @@ class ExampleApp extends StatelessWidget {
                 // Entry combinations
                 Center(
                   child: Wrap(
-                    children: [
+                    children: const [
                       // Example 1
                       Entry(
                         xOffset: -1000,
@@ -148,7 +148,7 @@ class ExampleApp extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GridView.builder(
                     itemCount: 100,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemBuilder: (context, index) => Entry.all(
@@ -162,7 +162,7 @@ class ExampleApp extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GridView.builder(
                     itemCount: 100,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemBuilder: (context, index) => Entry.all(
@@ -176,7 +176,7 @@ class ExampleApp extends StatelessWidget {
             floatingActionButton: Builder(
               builder: (context) {
                 return FloatingActionButton(
-                  child: Icon(Icons.refresh),
+                  child: const Icon(Icons.refresh),
                   onPressed: () async {
                     // Re-initializes the whole page to show the animations again
                     Navigator.of(context).pop();
