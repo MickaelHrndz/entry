@@ -131,10 +131,12 @@ class Entry extends StatelessWidget {
       duration: tween.duration,
       tween: tween,
       child: child,
-      builder: (context, child, value) => Opacity(
-        opacity: value.get("opacity"),
-        child: Transform.scale(
-          scale: value.get("scale"),
+      builder: (context, child, value) => Transform.scale(
+        scale: value.get("scale"),
+        child: AnimatedOpacity(
+          opacity: value.get("opacity"),
+          curve: curve,
+          duration: duration,
           child: Transform.translate(
             offset: Offset(
               value.get("xOffset"),
