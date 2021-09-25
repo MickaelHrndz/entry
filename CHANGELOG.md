@@ -1,6 +1,7 @@
 # 0.0.6
 - Updated simple_animations to 4.0.0
 - Replaced Opacity with AnimatedOpacity for performances
+- Adding .all constructor test and a Key test for every constructor
 
 # 0.0.5
 

@@ -9,28 +9,35 @@ void main() {
   Future<void> pumpEntry(WidgetTester tester, Entry entry) =>
       tester.pumpWidget(MaterialApp(home: entry), const Duration(seconds: 1));
 
+  const key = Key('testKey');
+
   testWidgets('default constructor', (tester) async {
-    await pumpEntry(tester, const Entry(child: Text('test')));
+    await pumpEntry(tester, const Entry(key: key, child: Text('test')));
+    expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('all constructor', (tester) async {
-    await pumpEntry(tester, const Entry.all(child: Text('test')));
+    await pumpEntry(tester, const Entry.all(key: key, child: Text('test')));
+    expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('fade constructor', (tester) async {
-    await pumpEntry(tester, const Entry.opacity(child: Text('test')));
+    await pumpEntry(tester, const Entry.opacity(key: key, child: Text('test')));
+    expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('grow constructor', (tester) async {
-    await pumpEntry(tester, const Entry.scale(child: Text('test')));
+    await pumpEntry(tester, const Entry.scale(key: key, child: Text('test')));
+    expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('move constructor', (tester) async {
-    await pumpEntry(tester, const Entry.offset(child: Text('test')));
+    await pumpEntry(tester, const Entry.offset(key: key, child: Text('test')));
+    expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
