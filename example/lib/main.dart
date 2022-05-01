@@ -28,9 +28,14 @@ class CustomCard extends StatelessWidget {
 }
 
 /// Example app widget
-class ExampleApp extends StatelessWidget {
-  ExampleApp({Key? key}) : super(key: key);
-  
+class ExampleApp extends StatefulWidget {
+  const ExampleApp({Key? key}) : super(key: key);
+
+  @override
+  State<ExampleApp> createState() => _ExampleAppState();
+}
+
+class _ExampleAppState extends State<ExampleApp> {
   /// List of the tabs titles
   final tabs = [
     "Constructors",
@@ -41,6 +46,8 @@ class ExampleApp extends StatelessWidget {
 
   /// Random instance
   final random = Random();
+
+  var visible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -67,78 +74,98 @@ class ExampleApp extends StatelessWidget {
             body: TabBarView(
               children: [
                 // Constructors
-                Center(
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    runAlignment: WrapAlignment.center,
-                    children: const [
-                      Entry.all(
-                          //delay: Duration(seconds: 1),
-                          child: CustomCard("Entry.all()")),
-                      Entry.opacity(
-                          //delay: Duration(seconds: 1),
-                          child: CustomCard("Entry.opacity()")),
-                      Entry.scale(
-                          //delay: Duration(seconds: 1),
-                          child: CustomCard("Entry.scale()")),
-                      Entry.offset(
-                          //delay: Duration(seconds: 1),
-                          child: CustomCard("Entry.offset()")),
-                    ],
-                  ),
+                Column(
+                  children: [
+                    Expanded(child: Container(color: Colors.black12)),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      runAlignment: WrapAlignment.center,
+                      children: [
+                        Entry.all(
+                          visible: visible,
+                          duration: const Duration(seconds: 2),
+                          child: const CustomCard("Entry.all()"),
+                        ),
+                        Entry.opacity(
+                          visible: visible,
+                          duration: const Duration(seconds: 2),
+                          child: const CustomCard("Entry.opacity()"),
+                        ),
+                        Entry.scale(
+                          visible: visible,
+                          duration: const Duration(seconds: 2),
+                          child: const CustomCard("Entry.scale()"),
+                        ),
+                        Entry.offset(
+                          visible: visible,
+                          duration: const Duration(seconds: 2),
+                          child: const CustomCard("Entry.offset()"),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                        child: Container(
+                      color: Colors.black12,
+                      child: Center(
+                          child: ElevatedButton(
+                        onPressed: () => setState(() => visible = !visible),
+                        child: Text("visible : $visible"),
+                      )),
+                    )),
+                  ],
                 ),
                 // Entry combinations
                 Center(
                   child: Wrap(
-                    children: const [
+                    children: [
                       // Example 1
                       Entry(
                         xOffset: -1000,
                         scale: 20,
-                        delay: Duration(milliseconds: 300),
-                        duration: Duration(milliseconds: 700),
+                        delay: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 700),
                         curve: Curves.ease,
                         child: Entry(
                           opacity: .5,
                           angle: 3.1415,
                           scale: .5,
-                          delay: Duration(milliseconds: 900),
-                          duration: Duration(milliseconds: 500),
+                          delay: const Duration(milliseconds: 900),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.decelerate,
-                          child: CustomCard("Example 1"),
+                          child: const CustomCard("Example 1"),
                         ),
                       ),
                       // Example 2
                       Entry(
-                        delay: Duration(milliseconds: 300),
-                        duration: Duration(milliseconds: 300),
+                        delay: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         opacity: 0,
                         yOffset: -1000,
                         curve: Curves.easeInOutCubic,
                         child: Entry(
-                          delay: Duration(milliseconds: 450),
-                          duration: Duration(milliseconds: 600),
+                          delay: const Duration(milliseconds: 450),
+                          duration: const Duration(milliseconds: 600),
                           curve: Curves.decelerate,
                           scale: 0.5,
                           angle: 1.5707,
-                          child: CustomCard("Example 2"),
+                          child: const CustomCard("Example 2"),
                         ),
                       ),
                       // Example 3
                       Entry(
-                        delay: Duration(milliseconds: 300),
-                        duration: Duration(milliseconds: 700),
+                        delay: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 700),
                         yOffset: 1000,
                         xOffset: 1000,
                         angle: -4.1415,
                         curve: Curves.fastOutSlowIn,
                         child: Entry(
-                          delay: Duration(milliseconds: 1000),
-                          duration: Duration(milliseconds: 250),
+                          delay: const Duration(milliseconds: 1000),
+                          duration: const Duration(milliseconds: 250),
                           curve: Curves.easeOut,
                           opacity: 0.5,
                           scale: 0.5,
-                          child: CustomCard("Example 3"),
+                          child: const CustomCard("Example 3"),
                         ),
                       ),
                     ],
@@ -150,7 +177,8 @@ class ExampleApp extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GridView.builder(
                     itemCount: 100,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemBuilder: (context, index) => Entry.all(
@@ -164,7 +192,8 @@ class ExampleApp extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GridView.builder(
                     itemCount: 100,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemBuilder: (context, index) => Entry.all(
@@ -185,7 +214,7 @@ class ExampleApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                        pageBuilder: (_, __, ___) => ExampleApp(),
+                        pageBuilder: (_, __, ___) => const ExampleApp(),
                         transitionDuration: Duration.zero,
                       ),
                     );
