@@ -12,37 +12,37 @@ void main() {
   const key = Key('testKey');
 
   testWidgets('default constructor', (tester) async {
-    await pumpEntry(tester, const Entry(key: key, child: Text('test')));
+    await pumpEntry(tester, Entry(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('all constructor', (tester) async {
-    await pumpEntry(tester, const Entry.all(key: key, child: Text('test')));
+    await pumpEntry(tester, Entry.all(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('fade constructor', (tester) async {
-    await pumpEntry(tester, const Entry.opacity(key: key, child: Text('test')));
+    await pumpEntry(tester, Entry.opacity(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('grow constructor', (tester) async {
-    await pumpEntry(tester, const Entry.scale(key: key, child: Text('test')));
+    await pumpEntry(tester, Entry.scale(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('move constructor', (tester) async {
-    await pumpEntry(tester, const Entry.offset(key: key, child: Text('test')));
+    await pumpEntry(tester, Entry.offset(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
   testWidgets('default values are used when not specified', (tester) async {
-    await tester.pumpWidget(const Entry(child: FlutterLogo()));
+    await tester.pumpWidget(Entry(child: const FlutterLogo()));
     //tester.idle();
     var entry = tester.widget<Entry>(find.byType(Entry));
     expect(entry.delay, Duration.zero);

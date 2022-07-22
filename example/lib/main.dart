@@ -83,22 +83,22 @@ class _ExampleAppState extends State<ExampleApp> {
                       children: [
                         Entry.all(
                           visible: visible,
-                          duration: const Duration(seconds: 2),
+                          duration: const Duration(seconds: 1),
                           child: const CustomCard("Entry.all()"),
                         ),
                         Entry.opacity(
                           visible: visible,
-                          duration: const Duration(seconds: 2),
+                          duration: const Duration(seconds: 1),
                           child: const CustomCard("Entry.opacity()"),
                         ),
                         Entry.scale(
                           visible: visible,
-                          duration: const Duration(seconds: 2),
+                          duration: const Duration(seconds: 1),
                           child: const CustomCard("Entry.scale()"),
                         ),
                         Entry.offset(
                           visible: visible,
-                          duration: const Duration(seconds: 2),
+                          duration: const Duration(seconds: 1),
                           child: const CustomCard("Entry.offset()"),
                         ),
                       ],
