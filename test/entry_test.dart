@@ -58,14 +58,14 @@ void main() {
   testWidgets('assertion error if opacity is out of bounds', (tester) async {
     // opacity < 0 throws assertion error
     expect(
-        () async =>
-            await tester.pumpWidget(Entry(opacity: -1, child: const FlutterLogo())),
+        () async => await tester
+            .pumpWidget(Entry(opacity: -1, child: const FlutterLogo())),
         throwsAssertionError);
 
     // opacity > 1 throws assertion error
     expect(
-        () async =>
-            await tester.pumpWidget(Entry(opacity: 1.01, child: const FlutterLogo())),
+        () async => await tester
+            .pumpWidget(Entry(opacity: 1.01, child: const FlutterLogo())),
         throwsAssertionError);
   });
 }
