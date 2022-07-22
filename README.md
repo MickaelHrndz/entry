@@ -13,7 +13,7 @@
   <a href="https://flutter.dev">
     <img src="https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter"
       alt="Platform" />
-  </a>
+  </a><br />
   <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://badges.bar/entry/likes"></a>
   <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://badges.bar/entry/popularity"></a>
   <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://badges.bar/entry/pub%20points"></a><br />
@@ -31,29 +31,25 @@
     <img src="https://img.shields.io/badge/Awesome-Flutter-FC60A8?logo=awesome-lists"
       alt="Awesome Flutter" /-->
   </a>
-  <a href="https://www.paypal.me/MickaelHrndz">
-    <img src="https://img.shields.io/badge/Donate-PayPal-00457C?logo=paypal"
-      alt="Donate" />
-  </a>
 </p></br>
 
 This Flutter package introduces a new widget : `Entry`.
 
 It lets you simply animate a widget into a visible state.
 
-- Don't just display widgets : make them **appear**.
+- Don't just display widgets : make them **appear** (and disappear).
 - Lightweight and flexible : **one** widget is all you need.
-- Wrap a widget with an `Entry` widget and watch it come to **life**.
+- Wrap a widget with an `Entry.all` and watch it **come to life**.
 
 `Entry` animates **opacity**, **scale**, **position** and **angle** concurrently.
 
-You can visualize the `Curves` constants on the  [doc page](https://api.flutter.dev/flutter/animation/Curves-class.html).
+You can visualize the `Curves` constants on its [ documentation page](https://api.flutter.dev/flutter/animation/Curves-class.html).
 
 ## 🏭 Constructors
 
 ### Default
 
-`Entry({key, delay, duration, curve, opacity, scale, xOffset, yOffset, angle, child})`
+`Entry({key, delay, duration, curve, visible, opacity, scale, xOffset, yOffset, angle, child})`
 
 This constructor is **motionless** by default.
 
@@ -62,19 +58,19 @@ It includes every parameter available in named constructors.
 
 ### Named
 
-`Entry` has four named constructors :
+`Entry` has **four** named constructors :
 
-- `Entry.all({opacity, scale, xOffset, yOffset, angle})`
+1. `Entry.all({visible, opacity, scale, xOffset, yOffset, angle})`
 
 `.all` makes use of every animation by default, except for the angle.
 
 The three others are each dedicated to a single animation :
 
-- `Entry.opacity({opacity})`
-- `Entry.scale({scale})`
-- `Entry.offset({xOffset, yOffset})`
+2. `Entry.opacity({opacity})`
+3. `Entry.scale({scale})`
+4. `Entry.offset({xOffset, yOffset})`
 
-_The `key`, `delay`, `duration`, `curve` and `child` parameters are omitted here._
+_The `key`, `delay`, `duration`, `curve`, `visible` and `child` parameters are omitted here._
 
 ## 💕 Combining entries
 
