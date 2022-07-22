@@ -23,19 +23,19 @@ void main() {
     expect(find.text('test'), findsOneWidget);
   });
 
-  testWidgets('fade constructor', (tester) async {
+  testWidgets('opacity constructor', (tester) async {
     await pumpEntry(tester, Entry.opacity(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
-  testWidgets('grow constructor', (tester) async {
+  testWidgets('scale constructor', (tester) async {
     await pumpEntry(tester, Entry.scale(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
   });
 
-  testWidgets('move constructor', (tester) async {
+  testWidgets('offset constructor', (tester) async {
     await pumpEntry(tester, Entry.offset(key: key, child: const Text('test')));
     expect(find.byKey(key), findsOneWidget);
     expect(find.text('test'), findsOneWidget);
@@ -48,6 +48,7 @@ void main() {
     expect(entry.delay, Duration.zero);
     expect(entry.duration, const Duration(milliseconds: 300));
     expect(entry.curve, Curves.ease);
+    expect(entry.visible, true);
     expect(entry.opacity, 1);
     expect(entry.scale, 1);
     expect(entry.xOffset, 0);
