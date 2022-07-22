@@ -1,11 +1,16 @@
+# 0.0.7
+- BREAKING CHANGE : `Entry` constructor is not `const` anymore
+- Introducing the `visible` parameter to toggle the child's visibility
+- Upgrading dependencies
+
 # 0.0.6
 - Updated simple_animations to 4.0.0
-- Replaced Opacity with AnimatedOpacity for performances
-- Adding .all constructor test and a Key test for every constructor
+- Replaced `Opacity` with `AnimatedOpacity` for performances
+- Adding `.all` constructor test and a `Key` test for every constructor
 
 # 0.0.5
 
-- Making all constructors const
+- Making all constructors `const`
 - Switching effective dart with Flutter lints
 - Adding a few badges to the readme
 
