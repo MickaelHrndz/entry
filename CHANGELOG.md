@@ -1,6 +1,7 @@
 # 0.0.7
 - BREAKING CHANGE : `Entry` constructor is not `const` anymore
 - Introducing the `visible` parameter to toggle the child's visibility
+- Upgrading dependencies
 
 # 0.0.6
 - Updated simple_animations to 4.0.0
