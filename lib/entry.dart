@@ -49,7 +49,7 @@ class Entry extends StatelessWidget {
   })  : assert(opacity >= 0 && opacity <= 1),
         super(key: key); // coverage:ignore-line
 
-  /// Constructor making use of every animation by default except [angle]
+  /// Constructor making use of every animation by default except [angle] and [xOffset]
   Entry.all({
     Key? key,
     this.delay = Duration.zero,
