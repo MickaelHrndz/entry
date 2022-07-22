@@ -22,6 +22,7 @@
       alt="Codecov Coverage" />
   </a>
   <a href="https://www.codefactor.io/repository/github/mickaelhrndz/entry"><img src="https://www.codefactor.io/repository/github/mickaelhrndz/entry/badge" alt="CodeFactor" /></a>
+  <a href="https://github.com/MickaelHrndz/entry/issues"><img src="https://img.shields.io/github/issues/mickaelhrndz/entry.svg" alt="CodeFactor" /></a>
   <a href="https://github.com/MickaelHrndz/entry" target="_blank"><img src="https://img.shields.io/github/stars/mickaelhrndz/entry"></a>
   <a href="https://pub.dev/packages/entry/license">
     <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
