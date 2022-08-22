@@ -59,7 +59,7 @@ It includes every parameter available in named constructors.
 
 1. `Entry.all({visible, opacity, scale, xOffset, yOffset, angle})`
 
-`.all` makes use of every animation by default, except for the angle.
+`.all` makes use of every animation by default, except for `angle` and `xOffset`.
 
 The three others are each dedicated to a single animation :
 
