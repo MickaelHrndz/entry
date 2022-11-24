@@ -16,7 +16,7 @@ class Entry extends StatelessWidget {
   final Curve curve;
 
   /// The state of visibility
-  bool visible;
+  final bool visible;
 
   /// The initial opacity (goes from [opacity] to 1)
   final double opacity;
@@ -34,7 +34,7 @@ class Entry extends StatelessWidget {
   final double angle;
 
   /// Default constructor (motionless by default)
-  Entry({
+  const Entry({
     Key? key,
     this.delay = Duration.zero,
     this.duration = const Duration(milliseconds: 300),
@@ -50,7 +50,7 @@ class Entry extends StatelessWidget {
         super(key: key); // coverage:ignore-line
 
   /// Constructor making use of every animation by default except [angle] and [xOffset]
-  Entry.all({
+  const Entry.all({
     Key? key,
     this.delay = Duration.zero,
     this.duration = const Duration(milliseconds: 300),
@@ -65,7 +65,7 @@ class Entry extends StatelessWidget {
   }) : super(key: key); // coverage:ignore-line
 
   /// Opacity-only constructor
-  Entry.opacity({
+  const Entry.opacity({
     Key? key,
     Duration delay = Duration.zero,
     Duration duration = const Duration(milliseconds: 300),
@@ -85,7 +85,7 @@ class Entry extends StatelessWidget {
         );
 
   /// Scale-only constructor
-  Entry.scale({
+  const Entry.scale({
     Key? key,
     Duration delay = Duration.zero,
     Duration duration = const Duration(milliseconds: 300),
@@ -105,7 +105,7 @@ class Entry extends StatelessWidget {
         );
 
   /// Offset-only constructor
-  Entry.offset({
+  const Entry.offset({
     Key? key,
     Duration delay = Duration.zero,
     Duration duration = const Duration(milliseconds: 300),
@@ -128,21 +128,24 @@ class Entry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tween = MultiTween<String>()
-      ..add("opacity", Tween(begin: opacity, end: 1.0), duration, curve)
-      ..add("scale", Tween(begin: scale, end: 1.0), duration, curve)
-      ..add("xOffset", Tween(begin: xOffset, end: 0.0), duration, curve)
-      ..add("yOffset", Tween(begin: yOffset, end: 0.0), duration, curve)
-      ..add("angle", Tween(begin: angle, end: 0.0), duration, curve);
-    return CustomAnimation<MultiTweenValues<String>>(
-      control: visible
-          ? CustomAnimationControl.play
-          : CustomAnimationControl.playReverse,
+    final tween = MovieTween()
+      ..tween("opacity", Tween(begin: opacity, end: 1.0),
+          duration: duration, curve: curve)
+      ..tween("scale", Tween(begin: scale, end: 1.0),
+          duration: duration, curve: curve)
+      ..tween("xOffset", Tween(begin: xOffset, end: 0.0),
+          duration: duration, curve: curve)
+      ..tween("yOffset", Tween(begin: yOffset, end: 0.0),
+          duration: duration, curve: curve)
+      ..tween("angle", Tween(begin: angle, end: 0.0),
+          duration: duration, curve: curve);
+    return CustomAnimationBuilder<Movie>(
+      control: visible ? Control.play : Control.playReverse,
       delay: delay,
       duration: tween.duration,
       tween: tween,
       child: child,
-      builder: (context, child, value) => Transform.scale(
+      builder: (context, value, child) => Transform.scale(
         scale: value.get("scale"),
         child: Opacity(
           opacity: value.get("opacity"),
