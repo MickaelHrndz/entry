@@ -1,3 +1,8 @@
+# 0.0.8
+- Reintroducing `const` `Entry` constructors
+- Upgrading simple_animations to 5.0.0+3
+- Fixing the pub.dev badges in the README
+
 # 0.0.7
 - BREAKING CHANGE : `Entry` constructor is not `const` anymore
 - Introducing the `visible` parameter to toggle the child's visibility
