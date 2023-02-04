@@ -1,5 +1,6 @@
 # 0.0.8+1
 - Added the screenshots to the pubspec
+- Added `const` to `Entry` instances in the tests
 
 # 0.0.8
 - Reintroducing `const` `Entry` constructors
