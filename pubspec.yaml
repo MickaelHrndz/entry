@@ -1,6 +1,6 @@
 name: entry
 description: Make your widgets come to life – Entry lets you simply animate a widget into a visible state. One widget to animate the opacity, scale, position and angle.
-version: 0.0.8
+version: 0.0.8+1
 homepage: "https://github.com/MickaelHrndz/entry"
 
 environment:
@@ -19,3 +19,12 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.1
 
+screenshots:
+  - description: 'Named constructors'
+    path: example/assets/entry.gif
+  - description: 'Combining Entry widgets'
+    path: example/assets/combined.gif
+  - description: 'Staggered animations'
+    path: example/assets/staggered.gif
+  - description: 'Randomized animations'
+    path: example/assets/randomized.gif

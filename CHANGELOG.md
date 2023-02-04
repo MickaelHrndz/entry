@@ -1,3 +1,6 @@
+# 0.0.8+1
+- Added the screenshots to the pubspec
+
 # 0.0.8
 - Reintroducing `const` `Entry` constructors
 - Upgrading simple_animations to 5.0.0+3
