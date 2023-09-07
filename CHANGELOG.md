@@ -1,5 +1,6 @@
 # 0.0.9
 - Upgrading simple_animations to 5.0.2 and flutter_lints to 2.0.3
+- Updating the SDK constraints and the Android project
 - Improving screenshots
 
 # 0.0.8+1
