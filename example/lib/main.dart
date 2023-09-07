@@ -13,7 +13,7 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        color: Colors.grey[100],
+        color: Colors.grey[300],
         width: 128,
         height: 128,
         child: Center(
@@ -75,8 +75,8 @@ class _ExampleAppState extends State<ExampleApp> {
               children: [
                 // Constructors
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(child: Container(color: Colors.black12)),
                     Wrap(
                       alignment: WrapAlignment.center,
                       runAlignment: WrapAlignment.center,
@@ -103,14 +103,10 @@ class _ExampleAppState extends State<ExampleApp> {
                         ),
                       ],
                     ),
-                    Expanded(
-                        child: Container(
-                      color: Colors.black12,
-                      child: Center(
-                          child: ElevatedButton(
-                        onPressed: () => setState(() => visible = !visible),
-                        child: Text("visible : $visible"),
-                      )),
+                    Center(
+                        child: ElevatedButton(
+                      onPressed: () => setState(() => visible = !visible),
+                      child: Text("visible : $visible"),
                     )),
                   ],
                 ),
