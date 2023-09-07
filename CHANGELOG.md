@@ -1,3 +1,7 @@
+# 0.0.9
+- Upgrading simple_animations to 5.0.2 and flutter_lints to 2.0.3
+- Improving screenshots
+
 # 0.0.8+1
 - Added the screenshots to the pubspec
 - Added `const` to `Entry` instances in the tests
