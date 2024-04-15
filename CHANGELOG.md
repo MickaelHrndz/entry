@@ -1,3 +1,7 @@
+# 1.0.0
+- Upgrading flutter_lints
+- Bumping version to 1.0 since the package seems stable and satisfying
+
 # 0.0.9
 - Upgrading simple_animations to 5.0.2 and flutter_lints to 2.0.3
 - Updating the SDK constraints and the Android project
