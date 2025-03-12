@@ -7,7 +7,7 @@ void main() {
 
   /// custom function to wrap [WidgetTester.pumpWidget]
   Future<void> pumpEntry(WidgetTester tester, Entry entry) =>
-      tester.pumpWidget(MaterialApp(home: entry), const Duration(seconds: 1));
+      tester.pumpWidget(MaterialApp(home: entry), duration: const Duration(seconds: 1));
 
   const key = Key('testKey');
 

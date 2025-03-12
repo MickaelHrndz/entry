@@ -1,3 +1,7 @@
+# 1.0.1
+- upgrading flutter_lints and the example project
+- fixing a test
+
 # 1.0.0
 - Upgrading flutter_lints
 - Bumping version to 1.0 since the package seems stable and satisfying
