@@ -1,4 +1,10 @@
+# 1.0.2
+- upgrading packages
+- Tween properties : replacing hardcoded strings with an enum
+- combine the three Transform widgets into a single one
+
 # 1.0.1
+
 - upgrading flutter_lints and the example project
 - fixing a test
 

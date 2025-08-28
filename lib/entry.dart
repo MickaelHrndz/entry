@@ -1,3 +1,4 @@
+import 'package:entry/tween_property.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -129,35 +130,37 @@ class Entry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tween = MovieTween()
-      ..tween("opacity", Tween(begin: opacity, end: 1.0),
-          duration: duration, curve: curve)
-      ..tween("scale", Tween(begin: scale, end: 1.0),
-          duration: duration, curve: curve)
-      ..tween("xOffset", Tween(begin: xOffset, end: 0.0),
-          duration: duration, curve: curve)
-      ..tween("yOffset", Tween(begin: yOffset, end: 0.0),
-          duration: duration, curve: curve)
-      ..tween("angle", Tween(begin: angle, end: 0.0),
-          duration: duration, curve: curve);
+      ..tween(TweenProperty.opacity, Tween(begin: opacity, end: 1.0), duration: duration, curve: curve)
+      ..tween(TweenProperty.scale, Tween(begin: scale, end: 1.0), duration: duration, curve: curve)
+      ..tween(TweenProperty.xOffset, Tween(begin: xOffset, end: 0.0), duration: duration, curve: curve)
+      ..tween(TweenProperty.yOffset, Tween(begin: yOffset, end: 0.0), duration: duration, curve: curve)
+      ..tween(TweenProperty.angle, Tween(begin: angle, end: 0.0), duration: duration, curve: curve);
+
     return CustomAnimationBuilder<Movie>(
       control: visible ? Control.play : Control.playReverse,
       delay: delay,
       duration: tween.duration,
       tween: tween,
       child: child,
-      builder: (context, value, child) => Transform.scale(
-        scale: value.get("scale"),
-        child: Opacity(
-          opacity: value.get("opacity"),
-          child: Transform.translate(
-            offset: Offset(
-              value.get("xOffset"),
-              value.get("yOffset"),
-            ),
-            child: Transform.rotate(angle: value.get("angle"), child: child),
+      builder: (context, value, child) {
+        final o = value.get(TweenProperty.opacity);
+        final s = value.get(TweenProperty.scale);
+        final dx = value.get(TweenProperty.xOffset);
+        final dy = value.get(TweenProperty.yOffset);
+        final a = value.get(TweenProperty.angle);
+
+        return Opacity(
+          opacity: o,
+          child: Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.identity()
+              ..scale(s)
+              ..translate(dx, dy)
+              ..rotateZ(a),
+            child: child,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
