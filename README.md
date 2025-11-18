@@ -6,19 +6,14 @@
 <h1 align="center">Entry</h1>
 
 <p align="center">
-  <a href="https://pub.dev/packages/entry">
-    <img src="https://img.shields.io/pub/v/entry.svg"
-      alt="Pub Package" />
-  </a>
-  <a href="https://flutter.dev">
-    <img src="https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter"
-      alt="Platform" />
-  </a><br />
-  <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://img.shields.io/pub/likes/entry?logo=dart&label=likes"></a>
-  <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://img.shields.io/pub/popularity/entry?logo=dart&label=popularity"></a>
-  <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://img.shields.io/pub/points/entry?logo=dart&label=points"></a><br />
+  <a href="https://pub.dev/packages/entry"><img src="https://img.shields.io/pub/v/entry.svg"alt="Pub Package" /></a>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter"alt="Platform" /></a>
+  <br />
   <a href="https://www.codefactor.io/repository/github/mickaelhrndz/entry"><img src="https://www.codefactor.io/repository/github/mickaelhrndz/entry/badge" alt="CodeFactor" /></a>
   <a href="https://github.com/MickaelHrndz/entry/issues"><img src="https://img.shields.io/github/issues/mickaelhrndz/entry.svg" alt="CodeFactor" /></a>
+  <br />
+  <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://img.shields.io/pub/likes/entry?logo=dart&label=likes"></a>
+  <a href="https://pub.dev/packages/entry/score" target="_blank"><img src="https://img.shields.io/pub/points/entry?logo=dart&label=points"></a>
   <a href="https://github.com/MickaelHrndz/entry" target="_blank"><img src="https://img.shields.io/github/stars/mickaelhrndz/entry"></a>
   
   <!--a href="https://github.com/Solido/awesome-flutter#animation">
