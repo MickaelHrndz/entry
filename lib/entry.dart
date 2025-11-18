@@ -36,7 +36,7 @@ class Entry extends StatelessWidget {
 
   /// Default constructor (motionless by default)
   const Entry({
-    Key? key,
+    super.key,
     this.delay = Duration.zero,
     this.duration = const Duration(milliseconds: 300),
     this.curve = Curves.ease,
@@ -47,12 +47,11 @@ class Entry extends StatelessWidget {
     this.yOffset = 0,
     this.angle = 0,
     required this.child,
-  })  : assert(opacity >= 0 && opacity <= 1),
-        super(key: key); // coverage:ignore-line
+  })  : assert(opacity >= 0 && opacity <= 1); // coverage:ignore-line
 
   /// Constructor making use of every animation by default except [angle] and [xOffset]
   const Entry.all({
-    Key? key,
+    super.key,
     this.delay = Duration.zero,
     this.duration = const Duration(milliseconds: 300),
     this.curve = Curves.ease,
@@ -63,7 +62,7 @@ class Entry extends StatelessWidget {
     this.yOffset = 150,
     this.angle = 0,
     required this.child,
-  }) : super(key: key); // coverage:ignore-line
+  }); // coverage:ignore-line
 
   /// Opacity-only constructor
   const Entry.opacity({
