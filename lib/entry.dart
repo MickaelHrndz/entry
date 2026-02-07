@@ -1,5 +1,6 @@
 import 'package:entry/tween_property.dart';
 import 'package:flutter/material.dart';
+import 'package:vector_math/vector_math_64.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 /// Animates its child into a visible state (opacity, scale,offset and angle)
@@ -47,7 +48,7 @@ class Entry extends StatelessWidget {
     this.yOffset = 0,
     this.angle = 0,
     required this.child,
-  })  : assert(opacity >= 0 && opacity <= 1); // coverage:ignore-line
+  }) : assert(opacity >= 0 && opacity <= 1); // coverage:ignore-line
 
   /// Constructor making use of every animation by default except [angle] and [xOffset]
   const Entry.all({
@@ -74,15 +75,15 @@ class Entry extends StatelessWidget {
     double opacity = 0,
     required Widget child,
   }) : this(
-          // coverage:ignore-line
-          key: key,
-          delay: delay,
-          duration: duration,
-          curve: curve,
-          visible: visible,
-          opacity: opacity,
-          child: child,
-        );
+         // coverage:ignore-line
+         key: key,
+         delay: delay,
+         duration: duration,
+         curve: curve,
+         visible: visible,
+         opacity: opacity,
+         child: child,
+       );
 
   /// Scale-only constructor
   const Entry.scale({
@@ -94,15 +95,15 @@ class Entry extends StatelessWidget {
     double scale = 0,
     required Widget child,
   }) : this(
-          // coverage:ignore-line
-          key: key,
-          delay: delay,
-          duration: duration,
-          curve: curve,
-          visible: visible,
-          scale: scale,
-          child: child,
-        );
+         // coverage:ignore-line
+         key: key,
+         delay: delay,
+         duration: duration,
+         curve: curve,
+         visible: visible,
+         scale: scale,
+         child: child,
+       );
 
   /// Offset-only constructor
   const Entry.offset({
@@ -115,25 +116,50 @@ class Entry extends StatelessWidget {
     double yOffset = 1000,
     required Widget child,
   }) : this(
-          // coverage:ignore-line
-          key: key,
-          delay: delay,
-          duration: duration,
-          curve: curve,
-          visible: visible,
-          xOffset: xOffset,
-          yOffset: yOffset,
-          child: child,
-        );
+         // coverage:ignore-line
+         key: key,
+         delay: delay,
+         duration: duration,
+         curve: curve,
+         visible: visible,
+         xOffset: xOffset,
+         yOffset: yOffset,
+         child: child,
+       );
 
   @override
   Widget build(BuildContext context) {
     final tween = MovieTween()
-      ..tween(TweenProperty.opacity, Tween(begin: opacity, end: 1.0), duration: duration, curve: curve)
-      ..tween(TweenProperty.scale, Tween(begin: scale, end: 1.0), duration: duration, curve: curve)
-      ..tween(TweenProperty.xOffset, Tween(begin: xOffset, end: 0.0), duration: duration, curve: curve)
-      ..tween(TweenProperty.yOffset, Tween(begin: yOffset, end: 0.0), duration: duration, curve: curve)
-      ..tween(TweenProperty.angle, Tween(begin: angle, end: 0.0), duration: duration, curve: curve);
+      ..tween(
+        TweenProperty.opacity,
+        Tween(begin: opacity, end: 1.0),
+        duration: duration,
+        curve: curve,
+      )
+      ..tween(
+        TweenProperty.scale,
+        Tween(begin: scale, end: 1.0),
+        duration: duration,
+        curve: curve,
+      )
+      ..tween(
+        TweenProperty.xOffset,
+        Tween(begin: xOffset, end: 0.0),
+        duration: duration,
+        curve: curve,
+      )
+      ..tween(
+        TweenProperty.yOffset,
+        Tween(begin: yOffset, end: 0.0),
+        duration: duration,
+        curve: curve,
+      )
+      ..tween(
+        TweenProperty.angle,
+        Tween(begin: angle, end: 0.0),
+        duration: duration,
+        curve: curve,
+      );
 
     return CustomAnimationBuilder<Movie>(
       control: visible ? Control.play : Control.playReverse,
@@ -153,8 +179,8 @@ class Entry extends StatelessWidget {
           child: Transform(
             alignment: Alignment.center,
             transform: Matrix4.identity()
-              ..scale(s)
-              ..translate(dx, dy)
+              ..scaleByVector3(Vector3(s, s, 1))
+              ..translateByVector3(Vector3(dx, dy, 0))
               ..rotateZ(a),
             child: child,
           ),

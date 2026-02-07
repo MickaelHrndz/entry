@@ -1,6 +1,6 @@
 name: entry
 description: Make your widgets come to life – Entry lets you simply animate a widget into a visible state. One widget to animate the opacity, scale, position and angle.
-version: 1.0.2
+version: 1.0.3
 homepage: "https://github.com/MickaelHrndz/entry"
 
 environment:
@@ -13,6 +13,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   simple_animations: ^5.2.0
+  vector_math: ^2.2.0
 
 dev_dependencies:
   flutter_test:

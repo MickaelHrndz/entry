@@ -1,3 +1,8 @@
+# 1.0.3
+- replace deprecated Matrix4 methods
+- update the example project
+- update badges on the README
+
 # 1.0.2
 - upgrading packages
 - Tween properties : replacing hardcoded strings with an enum

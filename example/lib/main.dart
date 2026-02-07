@@ -7,7 +7,7 @@ void main() => runApp(ExampleApp());
 
 /// Custom card used for every example
 class CustomCard extends StatelessWidget {
-  const CustomCard(this.label, {Key? key}) : super(key: key);
+  const CustomCard(this.label, {super.key});
   final String label;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CustomCard extends StatelessWidget {
 
 /// Example app widget
 class ExampleApp extends StatefulWidget {
-  const ExampleApp({Key? key}) : super(key: key);
+  const ExampleApp({super.key});
 
   @override
   State<ExampleApp> createState() => _ExampleAppState();
@@ -210,7 +210,7 @@ class _ExampleAppState extends State<ExampleApp> {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                        pageBuilder: (_, __, ___) => const ExampleApp(),
+                        pageBuilder: (_, _, _) => const ExampleApp(),
                         transitionDuration: Duration.zero,
                       ),
                     );
